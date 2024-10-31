@@ -1,0 +1,93 @@
+<h3>Связывание</h3>
+Hello from {{angular}}
+<br />
+2+2={{2+2}}
+<br />
+<div title="{{angular.toUpperCase()}}">подсказка</div>
+<div [title]="angular.toUpperCase()">подсказка</div>
+<input value="{{text}}" />
+<br />
+<input [value]="text" />
+<br />
+<button (click)="toggleCondition()">{{condition}}</button>
+<br />
+<input [(ngModel)]="text" />
+<br />
+<img
+  style="width: 100px"
+  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png"
+  [hidden]="condition"
+/>
+<hr />
+<h3>Классы и Стили</h3>
+state = <button (click)="toggleState()">{{state}}</button>
+<br />
+<div style="display: flex">
+  <div class="round" [class.green]="state"></div>
+  <div class="round" [class.red]="!state"></div>
+</div>
+<div style="display: flex">
+  <div [class]="{ round: true, green: state, red: !state}"></div>
+  <div [ngClass]="{ round: true, green: !state , red: state}"></div>
+</div>
+<hr />
+<h3>Директивы</h3>
+state = <ng-template [ngIf]="state"><span>{{state}}</span></ng-template>
+<br />
+State = <span *ngIf="state">{{state}}</span>
+<br />
+
+<ul>
+  <ng-template ngFor let-item [ngForOf]="items">
+    <li>{{item}}</li>
+  </ng-template>
+</ul>
+2+2=
+<span [ngSwitch]="2+2">
+  <b *ngSwitchCase="2">2</b>
+  <b *ngSwitchCase="3">3</b>
+  <b *ngSwitchCase="4">4</b>
+</span>
+<br />
+
+10*10=
+<span [ngSwitch]="10*10">
+  <b *ngSwitchCase="10">10</b>
+  <b *ngSwitchCase="100">99</b>
+  <br />
+</span>
+
+10%10=
+<span [ngSwitch]="10%10">
+  <b *ngSwitchCase="1">1</b>
+  <b *ngSwitchDefault>неизвестно</b>
+</span>
+<br />
+
+<span *ngFor="let item of items;let i=index">№{{i }} - {{item}}<br /></span>
+<hr />
+
+<h3>Pipes!</h3>
+Pipe currency: <span>{{ 1 / 7 | currency }}</span><br />
+Pipe percent: <span>{{ 1 / 7 | percent }}</span><br />
+Pipe uppercase: <span>{{ 'aaaa' | uppercase }}</span><br />
+Pipe lowercase: <span>{{ 'ZZZZ' | lowercase }}</span><br />
+Pipe date: <span>{{ toDay | date }}</span><br />
+Pipe date: <span>{{ toDay | date: 'dd/MM/yyyy' }}</span><br />
+Pipe slice: <span>{{ 'Hello World!' | slice: 6:11 }}</span><br />
+Pipe number: <span>{{ pi | number: '3.5-5' }}</span><br />
+<hr />
+<h3>Шаблонные переменные</h3>
+<button (click)="toggleState()">toggle</button><br />
+<input #myinput [(ngModel)]="text" />
+<!-- <span>myinput.value={{ myinput.value }}</span> -->
+<p #userName>=>{{ text }}</p>
+<p>userName.textContent={{ userName.textContent }}</p>
+<div
+  (click)="toggleState()"
+  [class]="{ round: true, green: state }"
+  #div1
+></div>
+div1.className ={{ div1.className }}
+<span>{{ div1.classList.contains('green') }}</span>
+<div class="round" [class.red]="div1.classList.contains('green')"></div>
