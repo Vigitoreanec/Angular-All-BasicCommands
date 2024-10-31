@@ -2,5 +2,19 @@
   <legend>
     <p>My comp!</p>
   </legend>
-  <div>Hello</div>
+  <div>Hello <span>{{ name | uppercase }}</span></div>
+  <fieldset>
+    <legend>{{ 'Kaliningrad' | uppercase }}</legend>
+    <button (click)="toChenge()">{{!chenge}}</button>
+    <br/>Численность ≈ <span>{{people}} человек</span>
+    <div style = "display: flex; justify-content: center; background-color:aliceblue;">
+      <img
+        style="width: 100px;"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Coat_of_arms_of_Kaliningrad.svg/135px-Coat_of_arms_of_Kaliningrad.svg.png"
+        [hidden]="chenge"/>
+    </div>
+    <ng-template ngFor let-text [ngForOf]="text">
+      {{text}}
+    </ng-template>
+  </fieldset>
 </fieldset>
